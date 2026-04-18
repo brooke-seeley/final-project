@@ -33,6 +33,29 @@ conf_map = {
     'Junior College': 'JC'
 }
 
+pos_map_1 = {
+    'CB': 'CB',
+    'DB/S': 'DB',
+    'DL/DE/DT': 'DL',
+    'LB': 'LB',
+    'OL/OT/OG/OC': 'OL',
+    'QB': 'QB',
+    'RB': 'RB',
+    'TE': 'TE',
+    'WR': 'WR'
+}
+
+pos_map_2 = {
+    'CB/DB': 'CB',
+    'DL/DE/DT': 'DL',
+    'LB': 'LB',
+    'OL/OT/OG/OC': 'OL',
+    'QB': 'QB',
+    'RB': 'RB',
+    'TE': 'TE',
+    'WR': 'WR'
+}
+
 # ===============================
 # HIGH SCHOOL FORM
 # ===============================
@@ -40,12 +63,12 @@ conf_map = {
 if player_type == 'High School':
 
     top247 = st.selectbox('Top 247 Recruit?', yes_no.keys())
-    position = st.selectbox('Position', ['CB', 'DB', 'DL', 'LB', 'OL', 'QB', 'RB', 'TE', 'WR'])
+    position = st.selectbox('Position', pos_map_1.keys())
     utah = st.selectbox('From Utah?', yes_no.keys())
     distance = st.number_input('Distance from BYU (miles)', min_value=0.0)
-    height = st.number_input('Height (inches)', min_value=60.0)
-    weight = st.number_input('Weight (lbs)', min_value=150.0)
-    score = st.number_input('247 Composite Score', min_value=0.0, max_value=1.0)
+    height = st.number_input('Height (inches)', step=1, format="%d")
+    weight = st.number_input('Weight (lbs)', step=1, format="%d")
+    score = st.number_input('247 Composite Score', min_value=0.0, max_value=1.0, step=0.0001, format="%.4f")
 
     lds = st.selectbox('LDS?', yes_no.keys())
     alumni = st.selectbox('Alumni Connection?', yes_no.keys())
@@ -73,14 +96,14 @@ else:
 
     years = st.number_input('Years of Eligibility Remaining', min_value=0)
     top247 = st.selectbox('Top 247 Transfer', yes_no.keys())
-    position = st.selectbox('Position', ['CB', 'DL', 'LB', 'OL', 'QB', 'RB', 'TE', 'WR'])
+    position = st.selectbox('Position', pos_map_2.keys())
     distance = st.number_input('Distance from BYU (miles)', min_value=0.0)
 
     conf = st.selectbox('Conference', conf_map.keys())
 
-    height = st.number_input('Height (inches)', min_value=60.0)
-    weight = st.number_input('Weight (lbs)', min_value=150.0)
-    score = st.number_input('247 Composite Score', min_value=0.0, max_value=1.0)
+    height = st.number_input('Height (inches)', min_value=60.0, step=1, format="%d")
+    weight = st.number_input('Weight (lbs)', min_value=150.0, step=1, format="%d")
+    score = st.number_input('247 Composite Score', min_value=0.0, max_value=1.0, step=0.0001, format="%.4f")
 
     lds = st.selectbox('LDS?', yes_no.keys())
     alumni = st.selectbox('Alumni Connection?', yes_no.keys())
